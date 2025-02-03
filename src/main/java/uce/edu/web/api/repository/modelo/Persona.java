@@ -23,7 +23,7 @@ public class Persona {
     private String apellido;
     @Column(name = "pers_fecha_nacimiento")
     private LocalDateTime fechaNacimiento;
-    
+
     // SET Y GET
 
     public Persona(Integer id, String nombre, String apellido, LocalDateTime fechaNacimiento) {
@@ -68,5 +68,4 @@ public class Persona {
         this.fechaNacimiento = fechaNacimiento;
     }
 
- 
 }

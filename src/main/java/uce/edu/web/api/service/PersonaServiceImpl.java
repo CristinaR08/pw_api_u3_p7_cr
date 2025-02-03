@@ -32,7 +32,7 @@ public class PersonaServiceImpl implements IPersonaService {
     @Override
     public void actualizar(PersonaTo persona) {
         Persona per = this.mapPersona.apply(persona);
-        this.ipersonaRepository.actualizar(null);
+        this.ipersonaRepository.actualizar(per);
     }
 
     @Override
