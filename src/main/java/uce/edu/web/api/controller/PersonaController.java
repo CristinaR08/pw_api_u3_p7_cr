@@ -38,8 +38,8 @@ public class PersonaController {
     }
 
     @PATCH
-    @Path("/{id}")
-    public void actualizarParcial(PersonaTo persona, @PathParam("id") Integer id) {
+    @Path("/{id}/nuevo/{cedula}")
+    public void actualizarParcial(PersonaTo persona, @PathParam("id") Integer id, @PathParam("cedula") String cedula) {
         PersonaTo tmp = this.personaService.buscarPorId(id);
         tmp.setNombre(persona.getNombre());
         this.personaService.actualizar(tmp);
