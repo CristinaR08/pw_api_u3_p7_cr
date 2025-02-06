@@ -7,6 +7,7 @@ import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import uce.edu.web.api.service.IPersonaService;
 import uce.edu.web.api.service.to.PersonaTo;
 
@@ -16,38 +17,37 @@ public class PersonaController {
     @Inject
     private IPersonaService personaService;
 
-    @Path("/buscar")
     @GET
-    public PersonaTo buscarPorId() {
-        Integer id = 1;
+    @Path("/{id}") //pathVariable
+    public PersonaTo buscarPorId(@PathParam("id") Integer id) {
         return this.personaService.buscarPorId(id);
         //return Response.ok(this.personaService.buscarPorId(id)).build();
     }
 
     @POST
-    @Path("/guardar")
+    @Path("")
     public void guardar(PersonaTo persona) {
         this.personaService.guardar(persona);
     }
 
     @PUT
-    @Path("/actualizar")
-    public void actualizar(PersonaTo persona) {
+    @Path("/{id}")
+    public void actualizar(PersonaTo persona, @PathParam("id") Integer id) {
+        persona.setId(id);
         this.personaService.actualizar(persona);
     }
 
     @PATCH
-    @Path("/actualizarParcial")
-    public void actualizarParcial(PersonaTo persona) {
-        PersonaTo tmp = this.personaService.buscarPorId(persona.getId());
+    @Path("/{id}")
+    public void actualizarParcial(PersonaTo persona, @PathParam("id") Integer id) {
+        PersonaTo tmp = this.personaService.buscarPorId(id);
         tmp.setNombre(persona.getNombre());
         this.personaService.actualizar(tmp);
     }
 
     @DELETE
-    @Path("/borrar")
-    public void borrar() {
-        Integer id = 1;
+    @Path("{id}")
+    public void borrar( @PathParam("id") Integer id) {
         this.personaService.borrar(id);
     }
 
