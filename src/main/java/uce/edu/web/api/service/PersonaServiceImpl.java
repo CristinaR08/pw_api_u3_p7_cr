@@ -1,5 +1,6 @@
 package uce.edu.web.api.service;
 
+import java.util.List;
 import java.util.function.Function;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -19,6 +20,10 @@ public class PersonaServiceImpl implements IPersonaService {
     private Function<Persona, PersonaTo> mapTo = pTo -> {
         PersonaTo persona = new PersonaTo(pTo.getId(), pTo.getNombre(), pTo.getApellido(), pTo.getFechaNacimiento());
         return persona;
+    };
+
+    private Function<List<Persona>, List<PersonaTo>> mapToList = (pList) -> {
+        return pList.stream().map(this.mapTo).toList();
     };
 
     @Inject
@@ -46,4 +51,20 @@ public class PersonaServiceImpl implements IPersonaService {
         return this.mapTo.apply(per);
     }
 
+    @Override
+    public List<PersonaTo> buscarTodos() {
+        return this.mapToList.apply(this.ipersonaRepository.buscarTodos());
+    }
+
+    @Override
+    public List<PersonaTo> buscarPorNombre(String nombre) {
+        return this.mapToList.apply(this.ipersonaRepository.buscarPorNombre(nombre));
+    }
+
+    @Override
+    public List<PersonaTo> buscarApellidoNombre(String apellido, String nombre) {
+        return this.mapToList.apply(ipersonaRepository.buscarApellidoNombre(apellido, nombre));
+    }
+
+  
 }
