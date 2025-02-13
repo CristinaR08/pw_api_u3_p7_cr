@@ -1,10 +1,14 @@
 package uce.edu.web.api.service.to;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class PersonaTo implements Serializable{
+import jakarta.xml.bind.annotation.XmlRootElement;
 
-    //private static final long serialVersionUID = -1544399202104638172L;
+@XmlRootElement
+public class PersonaTo implements Serializable {
+
+    // private static final long serialVersionUID = -1544399202104638172L;
 
     private Integer id;
     private String nombre;
@@ -21,31 +25,42 @@ public class PersonaTo implements Serializable{
         this.fechaNacimiento = fechaNacimiento;
     }
 
-// SET Y GET
+    // SET Y GET
 
+    @XmlElement
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @XmlElement
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    @XmlElement
     public String getApellido() {
         return apellido;
     }
+
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
+    @XmlElement
     public LocalDateTime getFechaNacimiento() {
         return fechaNacimiento;
     }
+
     public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    
+
 }
