@@ -5,7 +5,6 @@ import java.util.function.Function;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.persistence.TypedQuery;
 import uce.edu.web.api.repository.IEstudianteRepository;
 import uce.edu.web.api.repository.modelo.Estudiante;
 import uce.edu.web.api.service.to.EstudianteTo;

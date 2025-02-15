@@ -3,11 +3,7 @@ package uce.edu.web.api.service.to;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import uce.edu.web.api.LocalDateTimeAdapter;
-
-@XmlRootElement
+//@XmlRootElement
 public class PersonaTo implements Serializable {
 
     // private static final long serialVersionUID = -1544399202104638172L;
@@ -29,7 +25,7 @@ public class PersonaTo implements Serializable {
 
     // SET Y GET
 
-    @XmlElement
+    //@XmlElement
     public Integer getId() {
         return id;
     }
@@ -47,7 +43,7 @@ public class PersonaTo implements Serializable {
         this.nombre = nombre;
     }
 
-    @XmlElement
+    //@XmlElement
     public String getApellido() {
         return apellido;
     }
@@ -56,8 +52,8 @@ public class PersonaTo implements Serializable {
         this.apellido = apellido;
     }
 
-    @XmlElement
-    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
+    //@XmlElement
+    //@XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     public LocalDateTime getFechaNacimiento() {
         return fechaNacimiento;
     }

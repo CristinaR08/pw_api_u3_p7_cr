@@ -26,7 +26,7 @@ public class PersonaController {
 
     @GET
     @Path("/{id}") //pathVariable
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response buscarPorId(@PathParam("id") Integer id) {
         return Response.status(240).header("mensaje", "Persona creada pero en proceso de validación... :3")
         .header("valor1", 500)
@@ -56,7 +56,7 @@ public class PersonaController {
 
     @POST
     @Path("")
-    @Consumes(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void guardar(PersonaTo persona) {
         this.personaService.guardar(persona);
     }
@@ -70,7 +70,7 @@ public class PersonaController {
 
     @PATCH
     @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response actualizarParcial(PersonaTo persona, @PathParam("id") Integer id) {
         PersonaTo tmp = this.personaService.buscarPorId(id);        
